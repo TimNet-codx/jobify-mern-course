@@ -358,3 +358,7 @@ button:disabled {
   background: #ffeeee;
   color: #d66a6a;
 }
+.working {
+  background: rgb(199, 234, 220);
+  color: #277247;
+}

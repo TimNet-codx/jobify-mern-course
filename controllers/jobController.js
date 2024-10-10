@@ -171,6 +171,7 @@ export const showStats = async (req, res) => {
     pending: stats.pending || 0,
     interview: stats.interview || 0,
     declined: stats.declined || 0,
+    working: stats.working || 0,
    };
    
   /* let monthlyApplications = [

@@ -8,12 +8,13 @@ import { toast } from 'react-toastify';
 import customFetch from '../utils/customFetch';
 
 // ADD JOB Button Function 
-export const action = async ({request}) =>{
+export const action = (queryClient) =>  async ({request}) =>{
 const formData = await request.formData();
 const data =  Object.fromEntries(formData);
 
 try {
   await customFetch.post('/jobs', data);
+  queryClient.invalidateQueries(['jobs']);
   toast.success('Job added successfully ');
   return redirect('all-jobs');
 } catch (error) {
@@ -33,7 +34,7 @@ const AddJob = () => {
       <div className='form-center'>
         <FormRow type='text' name='position'/>
         <FormRow type='text' name='company'/>
-        <FormRow type='text' labelText='job location' name='jobLocation' defaultValue={user.location}/>
+        <FormRow type='text' labelText='job location' name='jobLocation'/>
         <FormRowSelect labelText='job status' name='jobStatus' defaultValue={JOB_STATUS.PENDING} list={Object.values(JOB_STATUS)}/>
         <FormRowSelect labelText='job type' name='jobType' defaultValue={JOB_TYPE.FULL_TIME} list={Object.values(JOB_TYPE)}/>
         

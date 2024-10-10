@@ -27,6 +27,10 @@ import path from 'path';
 // cloudinary
 import cloudinary from 'cloudinary';
 
+// Security
+import helmet from 'helmet';
+import mongoSanitize from 'express-mongo-sanitize';
+
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUD_API_KEY,
@@ -82,10 +86,12 @@ app.use(express.static(path.resolve(__dirname, './client/dist')));
 //app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
+app.use(helmet());
+app.use(mongoSanitize());
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
   res.send('Hello World');
-});
+});*/
 
 // app.post('/api/v1/test', 
 //   // [body('name').notEmpty().withMessage('name is required').isLength({min: 50}).withMessage('name must be at least 50')], (req, res, next)=>{
@@ -121,9 +127,9 @@ app.get('/', (req, res) => {
 // DELETE JOB
 //app.delete('/api/v1/jobs/:id',);
 
-app.get('/api/v1/test', (req, res) =>{
+/*app.get('/api/v1/test', (req, res) =>{
   res.json({msg: 'test route'});
-})
+})*/
 
 
 // For All Route

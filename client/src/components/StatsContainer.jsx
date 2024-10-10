@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaSuitcaseRolling, FaCalendarCheck, FaBug } from 'react-icons/fa';
+import { FaSuitcaseRolling, FaCalendarCheck, FaBug, FaWalking } from 'react-icons/fa';
 import Wrapper from '../assets/wrappers/StatsContainer';
 import StatItem from './StatItem';
 
@@ -24,6 +24,13 @@ const StatsContainer = ({defaultStats}) => {
       count: defaultStats?.declined || 0,
       icon: <FaBug />,
       color: '#d66a6a',
+      bcg: '#ffeeee',
+    },
+     {
+      title: 'current work',
+      count: defaultStats?.working || 0,
+      icon: <FaWalking />,
+      color: '#6ad697',
       bcg: '#ffeeee',
     },
   ];
